@@ -1,4 +1,6 @@
-export const FormStep3 = ({ values, onChange }) => {
+import { ErrorMessage } from "./ErrorMessage";
+
+export const FormStep3 = ({ values, onChange, errors }) => {
   return (
     <div className="space-y-6">
       <div>
@@ -17,6 +19,7 @@ export const FormStep3 = ({ values, onChange }) => {
           placeholder="Tell us more about your project or question..."
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
         ></textarea>
+        <ErrorMessage message={errors.message} />
       </div>
 
       <div className="flex items-start">
@@ -38,6 +41,7 @@ export const FormStep3 = ({ values, onChange }) => {
             </a>
             .
           </label>
+          <ErrorMessage message={errors.accept} />
         </div>
       </div>
     </div>

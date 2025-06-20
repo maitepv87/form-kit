@@ -18,16 +18,24 @@ export const FormKitPage = () => {
     isSubmitting,
     isSubmitted,
     submitForm,
+    formErrors,
+    resetForm,
   } = useFormKit();
 
   const renderStep = () => {
+    const props = {
+      values: formValues,
+      onChange: handleChange,
+      errors: formErrors,
+    };
+
     switch (currentStep) {
       case 1:
-        return <FormStep1 values={formValues} onChange={handleChange} />;
+        return <FormStep1 {...props} />;
       case 2:
-        return <FormStep2 values={formValues} onChange={handleChange} />;
+        return <FormStep2 {...props} />;
       case 3:
-        return <FormStep3 values={formValues} onChange={handleChange} />;
+        return <FormStep3 {...props} />;
       default:
         return null;
     }
@@ -36,7 +44,7 @@ export const FormKitPage = () => {
   return (
     <FormLayout title="Get in Touch" currentStep={currentStep}>
       {isSubmitted ? (
-        <SuccessMessage />
+        <SuccessMessage onReset={resetForm} />
       ) : (
         <>
           {renderStep()}

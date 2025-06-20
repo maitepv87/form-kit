@@ -1,4 +1,4 @@
-export const SuccessMessage = () => {
+export const SuccessMessage = ({ onReset }) => {
   return (
     <div className="text-center space-y-4">
       <svg
@@ -14,6 +14,12 @@ export const SuccessMessage = () => {
         Form submitted successfully!
       </h2>
       <p className="text-gray-600">Thanks! We'll be in touch soon.</p>
+      <button
+        onClick={onReset}
+        className="mt-4 inline-flex items-center px-4 py-2 text-sm font-medium text-blue-600 border border-blue-300 rounded hover:bg-blue-50"
+      >
+        Fill another form
+      </button>
     </div>
   );
 };

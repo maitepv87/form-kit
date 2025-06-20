@@ -1,4 +1,6 @@
-export const FormStep1 = ({ values, onChange }) => {
+import { ErrorMessage } from "./ErrorMessage";
+
+export const FormStep1 = ({ values, onChange, errors }) => {
   return (
     <div className="space-y-6">
       <div>
@@ -17,6 +19,7 @@ export const FormStep1 = ({ values, onChange }) => {
           placeholder="Jon Snow"
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
+        <ErrorMessage message={errors.fullName} />
       </div>
 
       <div>
@@ -35,6 +38,7 @@ export const FormStep1 = ({ values, onChange }) => {
           placeholder="you@example.com"
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
+        <ErrorMessage message={errors.email} />
       </div>
     </div>
   );

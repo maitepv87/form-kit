@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { validateStep } from "../utils/validateStep";
 
 export const useFormKit = () => {
   const [formValues, setFormValues] = useState({
@@ -17,6 +18,12 @@ export const useFormKit = () => {
 
   const totalSteps = 3;
 
+  const isStepValid = () => {
+    const errors = validateStep(formValues, currentStep);
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormValues((prev) => ({
@@ -26,7 +33,7 @@ export const useFormKit = () => {
   };
 
   const nextStep = () => {
-    if (currentStep < totalSteps) {
+    if (isStepValid()) {
       setCurrentStep((prev) => prev + 1);
     }
   };
@@ -38,11 +45,27 @@ export const useFormKit = () => {
   };
 
   const submitForm = () => {
+    if (!isStepValid()) return;
+
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 1500); // Simula envío
+    }, 1500);
+  };
+
+  const resetForm = () => {
+    setFormValues({
+      fullName: "",
+      email: "",
+      country: "",
+      phone: "",
+      message: "",
+      accept: false,
+    });
+    setFormErrors({});
+    setCurrentStep(1);
+    setIsSubmitted(false);
   };
 
   return {
@@ -55,5 +78,6 @@ export const useFormKit = () => {
     nextStep,
     prevStep,
     submitForm,
+    resetForm,
   };
 };

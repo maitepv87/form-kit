@@ -1,4 +1,6 @@
-export const FormStep2 = ({ values, onChange }) => {
+import { ErrorMessage } from "./ErrorMessage";
+
+export const FormStep2 = ({ values, onChange, errors }) => {
   return (
     <div className="space-y-6">
       <div>
@@ -25,6 +27,7 @@ export const FormStep2 = ({ values, onChange }) => {
           <option value="ar">Argentina</option>
           <option value="br">Brazil</option>
         </select>
+        <ErrorMessage message={errors.country} />
       </div>
 
       <div>
@@ -43,6 +46,7 @@ export const FormStep2 = ({ values, onChange }) => {
           placeholder="+1 555-0123"
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
         />
+        <ErrorMessage message={errors.phone} />
       </div>
     </div>
   );
