@@ -1,5 +1,14 @@
 import { ErrorMessage } from "./ErrorMessage";
 
+const countries = [
+  { code: "us", name: "United States" },
+  { code: "es", name: "Spain" },
+  { code: "mx", name: "Mexico" },
+  { code: "co", name: "Colombia" },
+  { code: "ar", name: "Argentina" },
+  { code: "br", name: "Brazil" },
+];
+
 export const FormStep2 = ({ values, onChange, errors }) => {
   return (
     <div className="space-y-6">
@@ -20,12 +29,11 @@ export const FormStep2 = ({ values, onChange, errors }) => {
           <option value="" disabled>
             Select your country
           </option>
-          <option value="us">United States</option>
-          <option value="es">Spain</option>
-          <option value="mx">Mexico</option>
-          <option value="co">Colombia</option>
-          <option value="ar">Argentina</option>
-          <option value="br">Brazil</option>
+          {countries.map(({ code, name }) => (
+            <option key={code} value={code}>
+              {name}
+            </option>
+          ))}
         </select>
         <ErrorMessage message={errors.country} />
       </div>
