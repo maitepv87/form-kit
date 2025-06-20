@@ -24,7 +24,7 @@ export const FormStep2 = ({ values, onChange, errors }) => {
           name="country"
           value={values.country}
           onChange={onChange}
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          className="mt-1 block w-full rounded-lg border border-gray-300 bg-white py-3.5 px-4 pr-10 text-base text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
         >
           <option value="" disabled>
             Select your country
@@ -52,7 +52,7 @@ export const FormStep2 = ({ values, onChange, errors }) => {
           value={values.phone}
           onChange={onChange}
           placeholder="+1 555-0123"
-          className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500"
+          className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-3 px-4 text-base text-gray-900 placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
         />
         <ErrorMessage message={errors.phone} />
       </div>

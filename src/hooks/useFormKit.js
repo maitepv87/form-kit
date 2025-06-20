@@ -16,8 +16,6 @@ export const useFormKit = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const totalSteps = 3;
-
   const isStepValid = () => {
     const errors = validateStep(formValues, currentStep);
     setFormErrors(errors);
